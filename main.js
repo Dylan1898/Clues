@@ -4,32 +4,35 @@ Weapons = ['bottle', 'knife', 'gun', 'tongs', 'cheese grater', 'slingshot', 'ban
 friendNum = []
 x = 0
 v = Friends[friendNum[x]]
-counter= 0
+counter = 0
 document.addEventListener('DOMContentLoaded', function () {
     // for ( x=0; x<101; x++){
     //    console.log(Friends[x]) 
     // }
-var getAlert = (function () {
-    
-    return function () {return counter ;}
-    
-})();
+    var getAlert = (function () {
+        var counter = 0
+        return function () { return counter; }
+
+    })();
 
     for (i = 1; i < 101; i++) {
         friendNum.push(getRandomInt())
-        clickCounter=0
+        clickCounter = 0
         var h3 = document.createElement('h3')
         var texty = h3.append('Clue  ' + [i])
-
+        h3.id = counter += 1
         // h3.id=(getRandomInt() +  getRandomInt2() + getRandomInt3()) 
         document.body.appendChild(h3)
+        // if (this.id%10 > 1){
+        //     console.log('thing')
+        // }
         h3.addEventListener('click', function () {
-            alert(getAlert())
-            
+            alert(Friends[this.id%5] + ' did it in the ' + Locations[this.id%10] + ' with a ' + Weapons[this.id%20])
+
         })
         
     }
-    
+
 })
 
 function getRandomInt(min, max) {
